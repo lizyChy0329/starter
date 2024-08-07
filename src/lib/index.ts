@@ -1,1 +1,4 @@
-export function useDemo() {}
+export function useDemo() {
+  console.log('success!');
+  
+}
