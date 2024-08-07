@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useDemo } from '@lizychy0329/starter'
 import HelloWorld from './components/HelloWorld.vue'
+
+useDemo()
 </script>
 
 <template>
