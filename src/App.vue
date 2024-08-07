@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fileToBase64, useCropper } from '@lizychy0329/we-cropper'
+import { useDemo } from '@lizychy0329/starter'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
