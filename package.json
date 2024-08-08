@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.24.1",
+    "@lizychy0329/cupertino-page-router": "^0.0.1",
     "@types/node": "^20.14.14",
     "@vitejs/plugin-vue": "^5.1.2",
     "@vue/compiler-sfc": "^3.4.36",
