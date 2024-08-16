@@ -1,58 +1,55 @@
 {
-  "name": "@lizychy0329/starter",
+  "name": "vue-library-starter-newest",
   "type": "module",
   "version": "0.0.1",
-  "private": false,
-  "packageManager": "pnpm@8.15.7",
-  "homepage": "https://github.com/lizyChy0329/starter",
+  "description": "A minimal Vue library starter, built on top of Vite & Vue 3",
+  "author": "xiaoluoboding <xiaoluoboding@gmail.com>",
+  "homepage": "https://github.com/xiaoluoboding/vue-library-starter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lizyChy0329/starter"
+    "url": "git+https://github.com/xiaoluoboding/vue-library-starter.git"
   },
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.umd.cjs"
-      }
-    },
-    "./style.css": "./dist/style.css"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.umd.cjs"
+    }
   },
-  "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./lib/index.umd.cjs",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
-    "LICENSE",
-    "README.md",
-    "dist",
-    "package.json"
+    "lib"
   ],
   "scripts": {
-    "dev": "vite build --watch",
-    "build": "vue-tsc -b && vite build",
+    "dev": "vite",
+    "build:docs": "vite build --mode docs",
+    "build:lib": "vite build --mode lib && vue-tsc -p tsconfig.build.json",
     "preview": "vite preview",
-    "play": "vite",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "peerDependencies": {
-    "vue": "^3.0.0",
-    "vue-router": "^4.4.3"
-  },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.24.1",
-    "@lizychy0329/cupertino-page-router": "^0.0.1",
-    "@types/node": "^20.14.14",
+    "@antfu/eslint-config": "^2.25.1",
+    "@bimdata/vite-plugin-libcss": "^0.0.1",
+    "@iconify/json": "^2.2.237",
+    "@types/node": "^22.3.0",
+    "@unocss/reset": "^0.62.1",
     "@vitejs/plugin-vue": "^5.1.2",
-    "@vue/compiler-sfc": "^3.4.36",
+    "@vue/tsconfig": "^0.5.1",
+    "@vueuse/core": "^10.11.1",
+    "clean-css": "^5.3.3",
+    "minimatch": "^9.0.1",
+    "shiki": "^1.13.0",
     "typescript": "^5.5.4",
-    "unocss": "^0.61.9",
-    "vite": "^5.3.5",
-    "vite-plugin-dts": "^3.9.1",
+    "unocss": "^0.62.1",
+    "unplugin-icons": "^0.19.2",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.4.0",
+    "vite-plugin-libcss": "^1.1.1",
+    "vue": "^3.4.37",
     "vue-tsc": "^2.0.29"
   }
 }
