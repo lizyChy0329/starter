@@ -1,95 +1,150 @@
-# Vue Library Starter
+<h2 align="center"><img src="https://files.catbox.moe/cmdn41.svg" height="128" /><br />we-cropper</h2>
+<p align="center"><strong>⚡️ A simply wechat-style image cropper wrapped with vue-advanced-cropper
+</strong></p>
+<p align=center>
+<a href="https://www.npmjs.com/package/@lizychy0329/we-cropper"><img alt="NPM Version" src="https://img.shields.io/npm/v/%40lizychy0329%2Fwe-cropper?color=25234c1&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40lizychy0329%2Fwe-cropper"></a>
+</p>
 
-[![NPM][npmBadge]][npmUrl]
-[![Minzip Package][bundlePhobiaBadge]][bundlePhobiaUrl]
-[![NPM Download][npmDtBadge]][npmDtUrl]
+## Feature
 
-[npmBadge]: https://img.shields.io/npm/v/vue-library-starter.svg?maxAge=2592000
-[npmUrl]: https://www.npmjs.com/package/vue-library-starter
-[npmDtBadge]: https://img.shields.io/npm/dt/vue-library-starter.svg
-[npmDtUrl]: https://www.npmjs.com/package/vue-library-starter
-[bundlePhobiaBadge]: https://img.shields.io/bundlephobia/minzip/vue-library-starter
-[bundlePhobiaUrl]: https://bundlephobia.com/package/vue-library-starter@latest
+- ✨ Easy to use: only one core `useCropper`
+- 🚀 Fixed cropping box
+- 🎯 Automatically zoom-in on the crop area
+- ❄️ ESM / UMD support
+- 🦾 Typescript support
 
-> A minimal Vue library starter, built on top of Vite & Vue 3
+## peerDependencies
 
-## Table of Contents
+"vue": "^3.0.0"
 
-<details>
+## Install
 
-<summary>TOC</summary>
-
-- [Vue Library Starter](#vue-library-starter)
-  - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-  - [Use the Template](#use-the-template)
-    - [GitHub Template](#github-template)
-    - [Clone to local](#clone-to-local)
-  - [Usage](#usage)
-    - [1、Install dependencies](#1install-dependencies)
-    - [2、Build a library](#2build-a-library)
-    - [3、Publish to npm](#3publish-to-npm)
-  - [License](#license)
-
-</details>
-
-## Features
-
-- Package manager [pnpm](https://pnpm.js.org/), safe and fast
-- Bundle with the [library mode](https://vitejs.dev/guide/build.html#library-mode)
-- Release with [semantic-release](https://www.npmjs.com/package/semantic-release)
-- Publish to [npm](https://docs.npmjs.com/cli/v8/commands/npm-publish)
-
-## Use the Template
-
-### GitHub Template
-
-[create a repo from this template on GitHub](https://github.com/new?template_name=vue-library-starter&template_owner=xiaoluoboding)
-
-### Clone to local
-
-```bash
-git clone https://github.com/xiaoluoboding/vue-library-starter
-
-cd vue-library-starter
-```
+`pnpm i @lizychy0329/we-cropper`
 
 ## Usage
 
-Building it is as easy as 1, 2, 3.
+```javascript
+// @lizychy0329/we-cropper
+import { fileToBase64, useCropper } from '@lizychy0329/we-cropper'
 
-### 1、Install dependencies
+const { showCropper, onCrop } = useCropper({
+  el: '#demoContainer', // default: document.body
+  aspectRatio: 1 / 1,
+  loadingText: '加载中...',
+  resetText: '还原',
+  confirmText: '确定',
+  cancelText: '取消',
+})
 
-```bash
-pnpm install
+// @vueuse/core
+const { open, onChange } = useFileDialog({
+  multiple: false,
+  accept: 'image/*'
+})
+
+// start
+const cropedImage = ref('')
+onChange(async (files) => {
+  const base64String = await fileToBase64(files[0])
+  showCropper(base64String)
+})
+
+onCrop((base64String) => {
+  cropedImage.value = base64String
+
+  // upload you cropedImage to OSS...
+})
 ```
 
-### 2、Build a library
+## Screenshot
 
-Rename all the `vue-library-starter` to your component name in the file `package.json、vite.config.ts`, eg: `my-component`
+![we-cropper](https://files.catbox.moe/hcjd0s.png)
 
-```bash
-pnpm run build:lib
+## Typescript
+
+```Typescript
+/**
+ * @description: base64 to blob
+ * @param base64String
+ */
+export declare function base64ToBlob(base64String: string): Promise<Blob>;
+
+/**
+ * @description: blob to base64
+ * @param file
+ */
+export declare function fileToBase64(file: File): Promise<string>;
+
+/**
+ * @description: url to base64
+ * @param url
+ * @param mineType 'image/png'
+ */
+export declare function urlToBase64(url: string, mineType?: string): Promise<string>;
+
+export declare function useCropper(options?: UseCropperOptions): {
+    onCrop: EventHookOn<any>;
+    showCropper: (src: string) => void;
+};
+
+declare type UseCropperOptions = Omit<WeCropperOptions, 'src'>;
+
+declare interface WeCropperOptions {
+    /**
+     * A base64string created from File
+     *
+     * @remarks Can use utils/fileToBase64 methods to transform
+     */
+    src: string;
+    /**
+     * Like teleport API in Vue3
+     *
+     * @default document.body
+     */
+    el?: HTMLElement | string
+    /**
+     * Cropper box aspect-ratio controll
+     *
+     * @default 1 / 1
+     */
+    aspectRatio?: number;
+
+    /**
+     * loading text
+     *
+     * @default Loading...
+     */
+    loadingText?: string
+
+    /**
+     * reset button text
+     *
+     * @default Reset
+     */
+    resetText?: string
+
+    /**
+     * confirm button text
+     *
+     * @default Confirm
+     */
+    confirmText?: string
+
+    /**
+     * cancel button text
+     *
+     * @default Cancel
+     */
+    cancelText?: string
+}
+
+export { }
 ```
 
-### 3、Publish to npm
+## Local Dev
 
-```
-npm publish
-```
+dev：pnpm dev
 
-## License
+build：pnpm build:lib
 
-MIT [@xiaoluoboding](https://github.com/xiaoluoboding)
-
-## Change
-
-- remove sass devDependencies
-~~- Support Top-level await in script setup~~
-
-- Add @antfu/eslint-config
-- Fix vue module type error
-- Fix @vue/tsconfig type error
-- Replace highlight.js with shiki
-- Replace inline-css with vite-plugin-libcss
-- Remove prettier config files
+docs build:docs
