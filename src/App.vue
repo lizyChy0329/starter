@@ -1,23 +1,22 @@
 <script lang="ts" setup>
-import { onBeforeMount, ref } from 'vue'
-import { codeToHtml } from 'shiki/bundle/web'
+// import { onBeforeMount, ref } from 'vue'
+// import { codeToHtml } from 'shiki/bundle/web'
 import { isDark, toggleDarkmode } from '~/composables/useDarkmode'
-import Playground from '~/components/Playground.vue'
 
-const demoCode0 = `# install
-> pnpm i @lizychy0329/we-cropper
-`
+// const demoCode0 = `# install
+// > pnpm i @lizychy0329/we-cropper
+// `
 
-const html = ref('')
-onBeforeMount(async () => {
-  html.value = await codeToHtml(demoCode0, {
-    lang: 'shell',
-    themes: {
-      light: 'min-light',
-      dark: 'synthwave-84',
-    },
-  })
-})
+// const html = ref('')
+// onBeforeMount(async () => {
+//   html.value = await codeToHtml(demoCode0, {
+//     lang: 'shell',
+//     themes: {
+//       light: 'min-light',
+//       dark: 'synthwave-84',
+//     },
+//   })
+// })
 </script>
 
 <template>
@@ -27,7 +26,7 @@ onBeforeMount(async () => {
         <div class="font-semibold text-xl flex-center gap-2">
           <!-- <Logo class="h-6 w-6" /> -->
           <img src="./components/logo.svg" class="h-6 w-6">
-          we-cropper
+          alga
         </div>
         <div class="flex-center gap-4">
           <button
@@ -68,10 +67,6 @@ onBeforeMount(async () => {
             <main class=" text-xs 2xl:text-sm drop-shadow-sm dark:(drop-shadow-color-gray-700) [&>pre]:(p-4 rounded-xl bg-transparent)" v-html="html" />
           </div>
         </div>
-
-        <div>
-          <Playground shrink-0 />
-        </div>
       </header>
 
       <footer
@@ -106,7 +101,7 @@ onBeforeMount(async () => {
   </div>
 </template>
 
-<style>
+<!-- <style>
 html.dark .shiki,
 html.dark .shiki span {
   color: var(--shiki-dark) !important;
@@ -116,4 +111,4 @@ html.dark .shiki span {
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
-</style>
+</style> -->

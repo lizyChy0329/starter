@@ -1,45 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-// @lizychy0329/we-cropper
-import { useFileDialog } from '@vueuse/core'
-import { fileToBase64, useCropper } from '../../packages'
+console.log('123');
 
-// const demoContainer = ref(null)
-const { showCropper, onCrop } = useCropper({
-  el: '#demoContainer',
-  aspectRatio: 1 / 1,
-  loadingText: '加载中...',
-  resetText: '还原',
-  confirmText: '确定',
-  cancelText: '取消',
-})
-
-// @vueuse/core
-const { open, onChange } = useFileDialog({
-  multiple: false,
-  accept: 'image/*',
-})
-
-// start
-const cropedImage = ref('')
-onChange(async (files) => {
-  if (!files) {
-    return
-  }
-
-  const base64String = await fileToBase64(files[0])
-  showCropper(base64String)
-})
-
-onCrop((base64String: string) => {
-  cropedImage.value = base64String
-
-  // 上传...
-})
-
-function reset(): void {
-  cropedImage.value = ''
-}
 </script>
 
 <template>

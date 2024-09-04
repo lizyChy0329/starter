@@ -6,13 +6,13 @@ import UnoCSS from 'unocss/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
-import libCss from '@bimdata/vite-plugin-libcss'
+import libCss from 'vite-plugin-libcss'
 import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const userConfig: UserConfig = {
-    base: '/we-cropper',
+    base: '/alga',
   }
 
   const defaultPlugins = [
@@ -36,7 +36,7 @@ export default defineConfig(({ mode }) => {
       cssTarget: ['chrome61'],
       lib: {
         entry: resolve(__dirname, 'packages/index.ts'),
-        name: 'weCropper',
+        name: 'alga',
         fileName: 'index',
       },
       outDir: 'dist',
@@ -89,14 +89,6 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
-    server: {
-      watch: {
-        ignored: ['!**/dist/**'],
-      },
-    },
-    optimizeDeps: {
-      exclude: ['@lizychy0329/we-cropper'],
-    },
     resolve: {
       alias: {
         '@': resolve(__dirname, './packages'),
