@@ -3,8 +3,6 @@ import type { UserConfig } from 'vite'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import libCss from '@bimdata/vite-plugin-libcss'
 
@@ -18,13 +16,8 @@ export default defineConfig(({ mode }) => {
       mode: 'per-module',
     }),
     Components({
-      resolvers: [
-        IconsResolver({
-          prefix: '',
-        }),
-      ],
+      dts: true,
     }),
-    Icons(),
   ]
 
   if (mode === 'lib') {

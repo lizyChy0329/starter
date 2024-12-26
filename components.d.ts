@@ -7,6 +7,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    'Carbon:cafe': typeof import('~icons/carbon/cafe')['default']
+    'Carbon:logoGithub': typeof import('~icons/carbon/logo-github')['default']
+    'Carbon:logoTwitter': typeof import('~icons/carbon/logo-twitter')['default']
+    'Carbon:moon': typeof import('~icons/carbon/moon')['default']
+    'Carbon:sun': typeof import('~icons/carbon/sun')['default']
     Logo: typeof import('./src/components/Logo.vue')['default']
+    'Mdi:heart': typeof import('~icons/mdi/heart')['default']
   }
 }
