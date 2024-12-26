@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { onBeforeMount, ref } from 'vue'
 import { codeToHtml } from 'shiki'
+import { onBeforeMount, ref } from 'vue'
 import { isDark, toggleDarkmode } from '~/composables/useDarkmode'
 
 const demoCode0 = `# install dependencies
@@ -32,23 +32,23 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div class="w-full h-full min-h-screen bg-neutral-50 dark:bg-neutral-900">
-    <div class="container mx-auto max-w-5xl relative">
-      <nav class="h-20 py-4 flex-between text-primary">
-        <div class="font-semibold text-xl flex-center gap-2">
+  <div class="h-full min-h-screen w-full bg-neutral-50 dark:bg-neutral-900">
+    <div class="relative mx-auto max-w-5xl container">
+      <nav class="h-20 flex-between py-4 text-primary">
+        <div class="flex-center gap-2 text-xl font-semibold">
           <Logo class="h-6 w-6" />
           Vue Library Starter
         </div>
         <div class="flex-center gap-4">
           <button
-            class="!bg-transparent opacity-50 hover:opacity-100 transition"
+            class="opacity-50 transition !bg-transparent hover:opacity-100"
             @click="(e) => toggleDarkmode()"
           >
-            <carbon:moon v-if="isDark" class="w-6 h-6" />
-            <carbon:sun v-else class="w-6 h-6" />
+            <carbon:moon v-if="isDark" class="h-6 w-6" />
+            <carbon:sun v-else class="h-6 w-6" />
           </button>
           <a
-            class="opacity-50 hover:opacity-100 transition"
+            class="opacity-50 transition hover:opacity-100"
             href="https://github.com/xiaoluoboding/vue-library-starter"
           >
             <carbon:logo-github class="h-6 w-6" />
@@ -63,20 +63,20 @@ onBeforeMount(async () => {
           </div>
         </div>
         <div
-          class="text-2xl font-semibold text-slate-700 py-4 dark:text-slate-200"
+          class="py-4 text-2xl text-slate-700 font-semibold dark:text-slate-200"
         >
           A minimal Vue library starter, built on top of Vite & Vue 3
         </div>
-        <div class="flex gap-4 mt-8">
+        <div class="mt-8 flex gap-4">
           <a
-            class="bg-gray-200 hover:bg-gray-300 transition rounded-full text-lg font-semibold py-3 px-6 w-full sm:w-auto text-center"
+            class="w-full rounded-full bg-gray-200 px-6 py-3 text-center text-lg font-semibold transition sm:w-auto hover:bg-gray-300"
             href="https://github.com/xiaoluoboding/vue-library-starter"
             target="_blank"
           >
             <span>Documentation</span>
           </a>
           <a
-            class="bg-emerald-400 hover:bg-emerald-500 flex items-center justify-center space-x-3 transition rounded-full text-white text-lg font-semibold py-3 px-6 w-full sm:w-auto cursor-pointer"
+            class="w-full flex cursor-pointer items-center justify-center rounded-full bg-emerald-400 px-6 py-3 text-lg text-white font-semibold transition sm:w-auto space-x-3 hover:bg-emerald-500"
             href="https://github.com/new?template_name=vue-library-starter&template_owner=xiaoluoboding"
             target="_blank"
           >
@@ -85,12 +85,15 @@ onBeforeMount(async () => {
         </div>
       </header>
 
-      <main class=" text-xs 2xl:text-sm [&>pre]:(p-4 rounded-xl)" v-html="html" />
+      <main
+        class="text-xs [&>pre]:(rounded-xl p-4) 2xl:text-sm"
+        v-html="html"
+      />
       <footer
         class="mt-16 w-full flex-center text-primary"
         text="slate-900 dark:slate-300 opacity-60 sm"
       >
-        <div class="copyright flex flex-col justify-center items-center">
+        <div class="copyright flex flex-col items-center justify-center">
           <p>
             Code with ❤ & ☕️ by
             <a class="text-neon" href="https://github.com/xiaoluoboding">
@@ -102,8 +105,7 @@ onBeforeMount(async () => {
             <carbon:logo-twitter class="text-emerald-500" />
             <span>
               <a
-                href="https://twitter.com/xiaoluoboding"
-                class="text-neon"
+                href="https://twitter.com/xiaoluoboding" class="text-neon"
                 target="_blank"
               >
                 Follow me on Twitter
@@ -113,8 +115,7 @@ onBeforeMount(async () => {
             <carbon:cafe class="text-emerald-500" />
             <span>
               <a
-                href="https://www.buymeacoffee.com/xlbd"
-                target="_blank"
+                href="https://www.buymeacoffee.com/xlbd" target="_blank"
                 class="text-neon"
               >
                 Buy me a coffee
@@ -125,8 +126,7 @@ onBeforeMount(async () => {
             <span>
               <a
                 href="https://github.com/sponsors/xiaoluoboding"
-                target="_blank"
-                class="text-neon"
+                target="_blank" class="text-neon"
               >
                 Sponsor me on GitHub
               </a>
@@ -135,7 +135,7 @@ onBeforeMount(async () => {
         </div>
       </footer>
 
-      <div class="w-full mx-auto" />
+      <div class="mx-auto w-full" />
     </div>
   </div>
 </template>
